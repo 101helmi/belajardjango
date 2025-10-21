@@ -2,7 +2,15 @@
 <form method="post">
   {% csrf_token %}
   <input type="text" name="name" placeholder="Nama" value="{{ product.name|default:'' }}"><br>
-  <input type="text" name="category" placeholder="Kategori" value="{{ product.category|default:'' }}"><br>
+  <label for="category">Kategori:</label>
+  <select name="category" id="category">
+    {% for value, name in category_choices %}
+      <option value="{{ value }}" {% if product and product.category == value %}selected{% endif %}>
+        {{ name }}
+      </option>
+    {% endfor %}
+  </select>
+  <br>
   <input type="number" step="0.01" name="price" placeholder="Harga" value="{{ product.price|default:'' }}"><br>
   <input type="number" name="stock" placeholder="Stok" value="{{ product.stock|default:'' }}"><br>
   <textarea name="description" placeholder="Deskripsi">{{ product.description|default:'' }}</textarea><br>
