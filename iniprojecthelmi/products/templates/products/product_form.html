@@ -1,0 +1,11 @@
+<h1>{% if product %}Edit{% else %}Tambah{% endif %} Produk</h1>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="name" placeholder="Nama" value="{{ product.name|default:'' }}"><br>
+  <input type="text" name="category" placeholder="Kategori" value="{{ product.category|default:'' }}"><br>
+  <input type="number" step="0.01" name="price" placeholder="Harga" value="{{ product.price|default:'' }}"><br>
+  <input type="number" name="stock" placeholder="Stok" value="{{ product.stock|default:'' }}"><br>
+  <textarea name="description" placeholder="Deskripsi">{{ product.description|default:'' }}</textarea><br>
+  <button type="submit">Simpan</button>
+</form>
+<a href="{% url 'product_list' %}">Kembali</a>
