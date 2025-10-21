@@ -1,0 +1,7 @@
+<h1>Hapus Produk</h1>
+<p>Apakah kamu yakin ingin menghapus produk "{{ product.name }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Ya, hapus</button>
+</form>
+<a href="{% url 'product_list' %}">Batal</a>
