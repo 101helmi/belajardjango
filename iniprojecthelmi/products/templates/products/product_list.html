@@ -3,17 +3,21 @@
 <table border="1">
   <tr>
     <th>Nama</th>
+    <th>Brand</th>
     <th>Kategori</th>
     <th>Harga</th>
     <th>Stok</th>
+    <th>Deskripsi</th>
     <th>Aksi</th>
   </tr>
   {% for p in products %}
   <tr>
     <td>{{ p.name }}</td>
+    <td>{{ p.brand }}</td>
     <td>{{ p.category }}</td>
     <td>{{ p.price }}</td>
     <td>{{ p.stock }}</td>
+    <td>{{ p.description }}</td>
     <td>
       <a href="{% url 'product_update' p.id %}">Edit</a> |
       <a href="{% url 'product_delete' p.id %}">Hapus</a>
